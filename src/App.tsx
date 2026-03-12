@@ -6,10 +6,15 @@ import { LearningPortalPage } from './pages/LearningPortalPage';
 import { StaticProcessPage } from './pages/StaticProcessPage';
 import { StaticPhysicalPage } from './pages/StaticPhysicalPage';
 import { StaticCasesPage } from './pages/StaticCasesPage';
+import { StaticResourcesPage } from './pages/StaticResourcesPage';
 
-type Route = '/' | '/basics' | '/learn' | '/process' | '/physical' | '/cases';
+type Route = '/' | '/basics' | '/learn' | '/process' | '/physical' | '/cases' | '/resources';
 
 function normalizeRoute(pathname: string): Route {
+  if (pathname === '/resources') {
+    return '/resources';
+  }
+
   if (pathname === '/cases') {
     return '/cases';
   }
@@ -66,6 +71,11 @@ export default function App() {
       return;
     }
 
+    if (route === '/resources') {
+      document.title = 'Resources | MIT RE Clinic';
+      return;
+    }
+
     if (route === '/physical') {
       document.title = 'Physical | MIT RE Clinic';
       return;
@@ -92,6 +102,7 @@ export default function App() {
       (nextRoute === '/learn' ||
         nextRoute === '/basics' ||
         nextRoute === '/cases' ||
+        nextRoute === '/resources' ||
         nextRoute === '/process' ||
         nextRoute === '/physical')
     ) {
@@ -110,6 +121,7 @@ export default function App() {
       {route === '/' && <StaticHomePage onNavigate={navigate} />}
       {route === '/basics' && <StaticBasicsPage onNavigate={navigate} />}
       {route === '/cases' && <StaticCasesPage onNavigate={navigate} />}
+      {route === '/resources' && <StaticResourcesPage />}
       {route === '/process' && <StaticProcessPage onNavigate={navigate} />}
       {route === '/physical' && <StaticPhysicalPage onNavigate={navigate} />}
       {route === '/learn' && <LearningPortalPage />}
