@@ -5,10 +5,15 @@ import { StaticBasicsPage } from './pages/StaticBasicsPage';
 import { LearningPortalPage } from './pages/LearningPortalPage';
 import { StaticProcessPage } from './pages/StaticProcessPage';
 import { StaticPhysicalPage } from './pages/StaticPhysicalPage';
+import { StaticCasesPage } from './pages/StaticCasesPage';
 
-type Route = '/' | '/basics' | '/learn' | '/process' | '/physical';
+type Route = '/' | '/basics' | '/learn' | '/process' | '/physical' | '/cases';
 
 function normalizeRoute(pathname: string): Route {
+  if (pathname === '/cases') {
+    return '/cases';
+  }
+
   if (pathname === '/basics') {
     return '/basics';
   }
@@ -56,6 +61,11 @@ export default function App() {
       return;
     }
 
+    if (route === '/cases') {
+      document.title = 'Cases | MIT RE Clinic';
+      return;
+    }
+
     if (route === '/physical') {
       document.title = 'Physical | MIT RE Clinic';
       return;
@@ -81,6 +91,7 @@ export default function App() {
       url.hash &&
       (nextRoute === '/learn' ||
         nextRoute === '/basics' ||
+        nextRoute === '/cases' ||
         nextRoute === '/process' ||
         nextRoute === '/physical')
     ) {
@@ -98,6 +109,7 @@ export default function App() {
       <SharedNavbar currentRoute={route} onNavigate={navigate} />
       {route === '/' && <StaticHomePage onNavigate={navigate} />}
       {route === '/basics' && <StaticBasicsPage onNavigate={navigate} />}
+      {route === '/cases' && <StaticCasesPage onNavigate={navigate} />}
       {route === '/process' && <StaticProcessPage onNavigate={navigate} />}
       {route === '/physical' && <StaticPhysicalPage onNavigate={navigate} />}
       {route === '/learn' && <LearningPortalPage />}

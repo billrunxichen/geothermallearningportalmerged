@@ -2,7 +2,7 @@ import type { MouseEvent } from 'react';
 import styles from './SharedNavbar.module.css';
 
 interface SharedNavbarProps {
-  currentRoute: '/' | '/basics' | '/learn' | '/process' | '/physical';
+  currentRoute: '/' | '/basics' | '/learn' | '/process' | '/physical' | '/cases';
   onNavigate: (href: string) => void;
 }
 
@@ -11,6 +11,7 @@ const navItems = [
   { href: '/basics', label: 'Basics' },
   { href: '/process', label: 'Process' },
   { href: '/physical', label: 'Physical' },
+  { href: '/cases', label: 'Cases' },
   { href: '/learn', label: 'Learning Portal' },
 ] as const;
 
