@@ -131,8 +131,8 @@ export function StaticProcessPage({ onNavigate }: StaticProcessPageProps) {
                 Now that you have a coalition and a process, it&apos;s time to look at the
                 physical infrastructure.
               </p>
-              <a href="/learn" className={styles.primaryButton} onClick={handleNavigate('/learn')}>
-                Next: Chapter 3 - Implementation →
+              <a href="/physical" className={styles.primaryButton} onClick={handleNavigate('/physical')}>
+                Next: Chapter 3 - Physical →
               </a>
             </div>
           </div>

@@ -52,7 +52,10 @@
 
 .heroButtons {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 16px;
 }
 
 .primaryButton {
@@ -70,10 +73,31 @@
   transition: all 0.2s ease;
 }
 
+.secondaryButton {
+  display: inline-block;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50px;
+  background: transparent;
+  color: var(--home-white);
+  padding: 16px 38px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+}
+
 .primaryButton:hover {
   background: #821829;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(163, 31, 52, 0.3);
+}
+
+.secondaryButton:hover {
+  border-color: var(--home-white);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
 }
 
 .rowWrapper {

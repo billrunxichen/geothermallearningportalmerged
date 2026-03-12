@@ -160,8 +160,8 @@ export function StaticPhysicalPage({ onNavigate }: StaticPhysicalPageProps) {
             <div className={styles.endSectionInner}>
               <span className={styles.phaseTag}>End of Chapter 3</span>
               <h2 className={styles.endTitle}>Explore the full library</h2>
-              <a href="/learn" className={styles.primaryButton} onClick={handleNavigate('/learn')}>
-                View All Resources
+              <a href="/cases" className={styles.primaryButton} onClick={handleNavigate('/cases')}>
+                Next: Chapter 4 - Cases →
               </a>
             </div>
           </div>

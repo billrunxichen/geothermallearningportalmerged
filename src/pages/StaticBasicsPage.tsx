@@ -102,8 +102,8 @@ export function StaticBasicsPage({ onNavigate }: StaticBasicsPageProps) {
             <div className={styles.endSectionInner}>
               <span className={styles.phaseTag}>Continue</span>
               <h2 className={styles.endTitle}>Scaling to the District Level</h2>
-              <a href="/learn" className={styles.primaryButton} onClick={handleNavigate('/learn')}>
-                Next: Systems & Costs →
+              <a href="/process" className={styles.primaryButton} onClick={handleNavigate('/process')}>
+                Next: Process →
               </a>
             </div>
           </div>

@@ -193,9 +193,9 @@ export function StaticCasesPage({ onNavigate }: StaticCasesPageProps) {
           <div className={styles.pageContainer}>
             <div className={styles.endSectionInner}>
               <span className={styles.phaseTag}>End of Chapter 4</span>
-              <h2 className={styles.endTitle}>Return Home</h2>
-              <a href="/" className={styles.primaryButton} onClick={handleNavigate('/')}>
-                Home
+              <h2 className={styles.endTitle}>Continue to the Resource Library</h2>
+              <a href="/resources" className={styles.primaryButton} onClick={handleNavigate('/resources')}>
+                Next: Resources →
               </a>
             </div>
           </div>

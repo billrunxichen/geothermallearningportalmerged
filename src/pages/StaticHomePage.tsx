@@ -24,8 +24,11 @@ export function StaticHomePage({ onNavigate }: StaticHomePageProps) {
               already have.
             </p>
             <div className={styles.heroButtons}>
-              <a href="/learn" className={styles.primaryButton} onClick={handleNavigate('/learn')}>
+              <a href="/basics" className={styles.primaryButton} onClick={handleNavigate('/basics')}>
                 Start Learning
+              </a>
+              <a href="/learn" className={styles.secondaryButton} onClick={handleNavigate('/learn')}>
+                Go to Learning Portal
               </a>
             </div>
           </div>
@@ -119,8 +122,8 @@ export function StaticHomePage({ onNavigate }: StaticHomePageProps) {
                   energy dollars in the local workforce, we build a more resilient future.
                 </p>
                 <div className={styles.ctaWrap}>
-                  <a href="/learn" className={styles.primaryButton} onClick={handleNavigate('/learn')}>
-                    Start the Technical Journey
+                  <a href="/basics" className={styles.primaryButton} onClick={handleNavigate('/basics')}>
+                    Start the Journey
                   </a>
                 </div>
               </div>
