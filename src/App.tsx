@@ -10,28 +10,54 @@ import { StaticResourcesPage } from './pages/StaticResourcesPage';
 
 type Route = '/' | '/basics' | '/learn' | '/process' | '/physical' | '/cases' | '/resources';
 
+const BASE_PATH = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+function stripBasePath(pathname: string): string {
+  if (!BASE_PATH || BASE_PATH === '') {
+    return pathname;
+  }
+
+  if (pathname === BASE_PATH) {
+    return '/';
+  }
+
+  if (pathname.startsWith(`${BASE_PATH}/`)) {
+    return pathname.slice(BASE_PATH.length) || '/';
+  }
+
+  return pathname;
+}
+
+function buildAppPath(route: string, hash = ''): string {
+  const normalizedRoute = route === '/' ? '' : route;
+  const base = BASE_PATH || '';
+  return `${base}${normalizedRoute}${hash}`;
+}
+
 function normalizeRoute(pathname: string): Route {
-  if (pathname === '/resources') {
+  const appPath = stripBasePath(pathname);
+
+  if (appPath === '/resources') {
     return '/resources';
   }
 
-  if (pathname === '/cases') {
+  if (appPath === '/cases') {
     return '/cases';
   }
 
-  if (pathname === '/basics') {
+  if (appPath === '/basics') {
     return '/basics';
   }
 
-  if (pathname === '/physical') {
+  if (appPath === '/physical') {
     return '/physical';
   }
 
-  if (pathname === '/process') {
+  if (appPath === '/process') {
     return '/process';
   }
 
-  if (pathname === '/learn') {
+  if (appPath === '/learn') {
     return '/learn';
   }
 
@@ -94,11 +120,12 @@ export default function App() {
       return;
     }
 
-    window.history.pushState({}, '', `${url.pathname}${url.hash}`);
+    const nextHash = url.hash || '';
+    window.history.pushState({}, '', buildAppPath(nextRoute, nextHash));
     setRoute(nextRoute);
 
     if (
-      url.hash &&
+      nextHash &&
       (nextRoute === '/learn' ||
         nextRoute === '/basics' ||
         nextRoute === '/cases' ||
@@ -107,7 +134,7 @@ export default function App() {
         nextRoute === '/physical')
     ) {
       window.requestAnimationFrame(() => {
-        const target = document.getElementById(url.hash.slice(1));
+        const target = document.getElementById(nextHash.slice(1));
         target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     } else {
