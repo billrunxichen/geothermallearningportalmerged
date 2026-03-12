@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+.page {
+  --basics-mit-red: #a31f34;
+  --basics-geo-green: #004d1a;
+  --basics-white: #ffffff;
+  font-family: 'Inter', sans-serif;
+  background: var(--basics-white);
+  color: #222;
+}
+
+.page,
+.page * {
+  box-sizing: border-box;
+}
+
+.pageContainer {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.rowWrapper {
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+  width: 100%;
+  padding: 100px 0;
+}
+
+.flipLayout {
+  flex-direction: row-reverse;
+}
+
+.standardLayout {
+  flex-direction: row;
+}
+
+.rowImageFrame,
+.rowText {
+  flex: 1;
+  width: 50%;
+  min-height: 480px;
+}
+
+.rowImageFrame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.processCard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 550px;
+  min-height: 450px;
+  overflow: hidden;
+  margin: 0 auto;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  background: #fff;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.processCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.processCardThumb {
+  flex: 1.5;
+  border-bottom: 1px solid #f0f0f0;
+  background-size: cover;
+  background-position: center;
+}
+
+.processCardInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 25px 30px;
+}
+
+.processCardLabel {
+  margin-bottom: 8px;
+  color: #999;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.processCardName {
+  margin: 0 0 10px;
+  color: #333;
+  font-size: 1.4rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.processCardLink {
+  color: var(--basics-geo-green);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.phaseTag {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  background: var(--basics-geo-green);
+  color: var(--basics-white);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.rowText h2 {
+  margin: 0 0 30px;
+  color: #333;
+  font-size: 1.8rem;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.rowText p {
+  margin: 0;
+  color: #444;
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+.moreText {
+  display: inline;
+}
+
+.readMoreButton {
+  margin-top: 10px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--basics-geo-green);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.endSection {
+  background: #f9f9f9;
+  padding: 100px 0;
+}
+
+.endSectionInner {
+  text-align: center;
+}
+
+.endTitle {
+  margin: 0 0 30px;
+  color: #333;
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+.primaryButton {
+  display: inline-block;
+  border-radius: 50px;
+  background: var(--basics-mit-red);
+  color: var(--basics-white);
+  padding: 15px 35px;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(163, 31, 52, 0.4);
+  transition: all 0.2s ease;
+}
+
+.primaryButton:hover {
+  background: #821829;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(163, 31, 52, 0.3);
+}
+
+@media (max-width: 768px) {
+  .pageContainer {
+    padding: 0 24px;
+  }
+
+  .row,
+  .flipLayout,
+  .standardLayout {
+    flex-direction: column-reverse;
+    gap: 40px;
+    padding: 72px 0;
+    text-align: center;
+  }
+
+  .rowImageFrame,
+  .rowText {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .processCard {
+    min-height: 400px;
+  }
+
+  .endTitle {
+    font-size: 2.1rem;
+  }
+}

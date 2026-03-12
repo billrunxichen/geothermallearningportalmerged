@@ -1,12 +1,22 @@
 import { useEffect, useState } from 'react';
 import { SharedNavbar } from './components/site/SharedNavbar';
 import { StaticHomePage } from './pages/StaticHomePage';
+import { StaticBasicsPage } from './pages/StaticBasicsPage';
 import { LearningPortalPage } from './pages/LearningPortalPage';
 import { StaticProcessPage } from './pages/StaticProcessPage';
+import { StaticPhysicalPage } from './pages/StaticPhysicalPage';
 
-type Route = '/' | '/learn' | '/process';
+type Route = '/' | '/basics' | '/learn' | '/process' | '/physical';
 
 function normalizeRoute(pathname: string): Route {
+  if (pathname === '/basics') {
+    return '/basics';
+  }
+
+  if (pathname === '/physical') {
+    return '/physical';
+  }
+
   if (pathname === '/process') {
     return '/process';
   }
@@ -41,6 +51,16 @@ export default function App() {
       return;
     }
 
+    if (route === '/basics') {
+      document.title = 'Basics | MIT RE Clinic';
+      return;
+    }
+
+    if (route === '/physical') {
+      document.title = 'Physical | MIT RE Clinic';
+      return;
+    }
+
     document.title = 'Geothermal Networks Education Website';
   }, [route]);
 
@@ -57,7 +77,13 @@ export default function App() {
     window.history.pushState({}, '', `${url.pathname}${url.hash}`);
     setRoute(nextRoute);
 
-    if (url.hash && (nextRoute === '/learn' || nextRoute === '/process')) {
+    if (
+      url.hash &&
+      (nextRoute === '/learn' ||
+        nextRoute === '/basics' ||
+        nextRoute === '/process' ||
+        nextRoute === '/physical')
+    ) {
       window.requestAnimationFrame(() => {
         const target = document.getElementById(url.hash.slice(1));
         target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -71,7 +97,9 @@ export default function App() {
     <>
       <SharedNavbar currentRoute={route} onNavigate={navigate} />
       {route === '/' && <StaticHomePage onNavigate={navigate} />}
+      {route === '/basics' && <StaticBasicsPage onNavigate={navigate} />}
       {route === '/process' && <StaticProcessPage onNavigate={navigate} />}
+      {route === '/physical' && <StaticPhysicalPage onNavigate={navigate} />}
       {route === '/learn' && <LearningPortalPage />}
     </>
   );
