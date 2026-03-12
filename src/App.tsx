@@ -2,10 +2,15 @@ import { useEffect, useState } from 'react';
 import { SharedNavbar } from './components/site/SharedNavbar';
 import { StaticHomePage } from './pages/StaticHomePage';
 import { LearningPortalPage } from './pages/LearningPortalPage';
+import { StaticProcessPage } from './pages/StaticProcessPage';
 
-type Route = '/' | '/learn';
+type Route = '/' | '/learn' | '/process';
 
 function normalizeRoute(pathname: string): Route {
+  if (pathname === '/process') {
+    return '/process';
+  }
+
   if (pathname === '/learn') {
     return '/learn';
   }
@@ -26,10 +31,17 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    document.title =
-      route === '/'
-        ? 'MIT RE Clinic | Geothermal Community Portal'
-        : 'Geothermal Networks Education Website';
+    if (route === '/') {
+      document.title = 'MIT RE Clinic | Geothermal Community Portal';
+      return;
+    }
+
+    if (route === '/process') {
+      document.title = 'Process | MIT RE Clinic';
+      return;
+    }
+
+    document.title = 'Geothermal Networks Education Website';
   }, [route]);
 
   const navigate = (href: string) => {
@@ -45,7 +57,7 @@ export default function App() {
     window.history.pushState({}, '', `${url.pathname}${url.hash}`);
     setRoute(nextRoute);
 
-    if (url.hash && nextRoute === '/learn') {
+    if (url.hash && (nextRoute === '/learn' || nextRoute === '/process')) {
       window.requestAnimationFrame(() => {
         const target = document.getElementById(url.hash.slice(1));
         target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -58,7 +70,9 @@ export default function App() {
   return (
     <>
       <SharedNavbar currentRoute={route} onNavigate={navigate} />
-      {route === '/' ? <StaticHomePage onNavigate={navigate} /> : <LearningPortalPage />}
+      {route === '/' && <StaticHomePage onNavigate={navigate} />}
+      {route === '/process' && <StaticProcessPage onNavigate={navigate} />}
+      {route === '/learn' && <LearningPortalPage />}
     </>
   );
 }
