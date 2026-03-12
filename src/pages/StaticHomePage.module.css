@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+.page {
+  --home-mit-red: #a31f34;
+  --home-geo-green: #004d1a;
+  --home-white: #ffffff;
+  --home-black: #000000;
+  font-family: 'Inter', sans-serif;
+  background: var(--home-white);
+  color: #222;
+}
+
+.page,
+.page * {
+  box-sizing: border-box;
+}
+
+.hero {
+  width: 100%;
+  padding: 160px 0;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    linear-gradient(135deg, var(--home-geo-green) 0%, var(--home-black) 100%);
+}
+
+.pageContainer {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.heroInner {
+  text-align: center;
+}
+
+.heroTitle {
+  margin: 0 0 25px;
+  color: var(--home-white);
+  font-size: 4.5rem;
+  line-height: 1.05;
+  letter-spacing: -3px;
+  font-weight: 800;
+}
+
+.heroCopy {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.3rem;
+  line-height: 1.65;
+}
+
+.heroButtons {
+  display: flex;
+  justify-content: center;
+}
+
+.primaryButton {
+  display: inline-block;
+  border-radius: 50px;
+  background: var(--home-mit-red);
+  color: var(--home-white);
+  padding: 20px 50px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(163, 31, 52, 0.4);
+  transition: all 0.2s ease;
+}
+
+.primaryButton:hover {
+  background: #821829;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(163, 31, 52, 0.3);
+}
+
+.rowWrapper {
+  width: 100%;
+}
+
+.rowWrapper:nth-of-type(even) {
+  background: #f8f9fa;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+  width: 100%;
+  padding: 100px 0;
+}
+
+.rowImage,
+.rowText,
+.rowImageFrame,
+.communityPanel {
+  flex: 1;
+  width: 50%;
+  min-height: 480px;
+}
+
+.rowImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.rowPhoto {
+  background-size: cover;
+}
+
+.rowImageFrame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inlineImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 40px;
+}
+
+.rowText h2 {
+  margin: 0 0 30px;
+  font-size: 3.2rem;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  font-weight: 800;
+}
+
+.rowText p {
+  margin: 0 0 25px;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #444;
+}
+
+.phaseTag {
+  display: inline-block;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  background: var(--home-geo-green);
+  color: var(--home-white);
+  padding: 6px 16px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.communityPanel {
+  border-radius: 40px;
+  background: var(--home-mit-red);
+}
+
+.communityPanelInner {
+  padding: 50px;
+}
+
+.communityPanelInner h3 {
+  margin: 0 0 30px;
+  color: var(--home-white);
+  font-size: 2.2rem;
+  font-weight: 800;
+}
+
+.communityList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--home-white);
+  font-size: 1.1rem;
+}
+
+.communityList li {
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.communityList li:last-child {
+  margin-bottom: 0;
+}
+
+.communityList strong {
+  display: block;
+  font-size: 1.3rem;
+}
+
+.ctaWrap {
+  margin-top: 40px;
+}
+
+@media (max-width: 900px) {
+  .heroTitle {
+    font-size: 3.5rem;
+    letter-spacing: -2px;
+  }
+
+  .row {
+    gap: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 120px 0;
+  }
+
+  .pageContainer {
+    padding: 0 24px;
+  }
+
+  .heroTitle {
+    font-size: 2.8rem;
+    line-height: 1.1;
+  }
+
+  .heroCopy {
+    font-size: 1.1rem;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+    padding: 72px 0;
+  }
+
+  .rowImage,
+  .rowText,
+  .rowImageFrame,
+  .communityPanel {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .rowText h2 {
+    font-size: 2.5rem;
+  }
+
+  .communityPanelInner {
+    padding: 36px 28px;
+  }
+}
