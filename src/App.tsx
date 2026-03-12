@@ -65,7 +65,27 @@ function normalizeRoute(pathname: string): Route {
 }
 
 export default function App() {
-  const [route, setRoute] = useState<Route>(() => normalizeRoute(window.location.pathname));
+  const [route, setRoute] = useState<Route>(() => {
+    const params = new URLSearchParams(window.location.search);
+    const fallbackPath = params.get('p');
+
+    if (fallbackPath) {
+      return normalizeRoute(fallbackPath.split('?')[0] || '/');
+    }
+
+    return normalizeRoute(window.location.pathname);
+  });
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const fallbackPath = params.get('p');
+
+    if (fallbackPath) {
+      const targetUrl = buildAppPath(fallbackPath);
+      window.history.replaceState({}, '', targetUrl);
+      setRoute(normalizeRoute(fallbackPath.split('?')[0] || '/'));
+    }
+  }, []);
 
   useEffect(() => {
     const handlePopState = () => {
